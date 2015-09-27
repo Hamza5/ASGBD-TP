@@ -4,8 +4,22 @@
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
 \usepackage{lmodern}
+\usepackage{listings}
+\usepackage[usenames,dvipsnames]{xcolor}
 \author{Hamza Abbad}
 \title{Rapport de TP ASGBD}
+\lstdefinestyle{OracleSQL}{breaklines=true, frame=single, keywordstyle=\bfseries\color{Blue}, stringstyle=\color{OliveGreen},
+morekeywords={*,TABLESPACE,AUTOEXTEND,TEMPORARY,PRIVILEGES,DATAFILE,IDENTIFIED,TEMPFILE,TO,ONLINE,USER}}
 \begin{document}
-•
+\section{Création des TableSpaces et des utilisateurs}
+	\begin{enumerate}
+		\item Requête : \lstinputlisting[language=SQL, firstline=2, lastline=2, style=OracleSQL]{../Scripts/TP1.sql}
+			Résultat : \texttt{SQL> Tablespace created.}
+		\item Requête : \lstinputlisting[language=SQL, firstline=3, lastline=3, style=OracleSQL]{../Scripts/TP1.sql}
+			Résultat : \texttt{SQL> Tablespace created.}
+		\item Requête : \lstinputlisting[language=SQL, firstline=4, lastline=4, style=OracleSQL]{../Scripts/TP1.sql}
+			Résultat : \texttt{SQL> User created.}
+		\item Requête : \lstinputlisting[language=SQL, firstline=5, lastline=5, style=OracleSQL]{../Scripts/TP1.sql}
+			Résultat : \texttt{SQL> Grant succeeded.}
+	\end{enumerate}
 \end{document}
