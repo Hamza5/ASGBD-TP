@@ -1,0 +1,5 @@
+# LaTeX
+*.pdf
+*.log
+*.dvi
+*.synctex.gz
