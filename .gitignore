@@ -3,3 +3,7 @@
 *.log
 *.dvi
 *.synctex.gz
+# Oracle
+*.dat
+# Backup
+*.bak
