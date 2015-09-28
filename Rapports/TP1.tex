@@ -30,7 +30,8 @@ morekeywords={*,TABLESPACE,AUTOEXTEND,TEMPORARY,PRIVILEGES,DATAFILE,IDENTIFIED,T
 	\end{enumerate}
 \section{Langage de définition de données}
 	\begin{enumerate}
-		\item[4.] Les clés étrangères :\\
+		\setcounter{enumi}{3}
+		\item Les clés étrangères :\\
 			\renewcommand{\arraystretch}{1.2}
 			\begin{tabular}{|*{4}{p{4cm}|}}
 			\hline
@@ -73,9 +74,12 @@ morekeywords={*,TABLESPACE,AUTOEXTEND,TEMPORARY,PRIVILEGES,DATAFILE,IDENTIFIED,T
 				\item Relation \texttt{SOIGNE}
 					\lstinputlisting[firstline=61, lastline=64, style=OracleSQL]{../Scripts/TP1.sql}
 						Résultat : \texttt{Table created.}\\
-					Ajout des contraintes
-					\lstinputlisting[firstline=68, lastline=90, style=OracleSQL]{../Scripts/TP1.sql}
-					Résultat : \texttt{Table altered.} (Après chaque requête)
+				Ajout des contraintes
+				\lstinputlisting[firstline=68, lastline=90, style=OracleSQL]{../Scripts/TP1.sql}
+				Résultat : \texttt{Table altered.} (Après chaque requête)
 			\end{enumerate}
+		\item Ajouter l'attribut \texttt{DATE\_HOST} :
+		\lstinputlisting[firstline=93, lastline=93, style=OracleSQL]{../Scripts/TP1.sql}
+		Résultat : \texttt{Table altered.}
 	\end{enumerate}
 \end{document}
