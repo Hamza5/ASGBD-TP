@@ -1,15 +1,18 @@
 \documentclass[12pt,a4paper]{article}
-\usepackage[utf8]{inputenc}
-\usepackage[frenchb]{babel}
 \usepackage[T1]{fontenc}
-\usepackage[left=1.5cm,right=1.5cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[utf8]{inputenc}
 \usepackage{lmodern}
+\usepackage[frenchb]{babel}
+\usepackage[left=1.5cm,right=1.5cm,top=2cm,bottom=2cm]{geometry}
 \usepackage{listings}
 \usepackage[usenames,dvipsnames]{xcolor}
 \author{Hamza Abbad}
 \title{Rapport de TP ASGBD}
-\lstdefinestyle{OracleSQL}{breaklines=true, frame=single, keywordstyle=\bfseries\color{Blue}, stringstyle=\color{OliveGreen},
-morekeywords={*,TABLESPACE,AUTOEXTEND,TEMPORARY,PRIVILEGES,DATAFILE,IDENTIFIED,TEMPFILE,TO,ONLINE,USER}}
+\lstdefinestyle{OracleSQL}{language=SQL,breaklines=true, frame=single, keywordstyle=\bfseries\color{Blue},
+keywordstyle=[2]\color{Blue},stringstyle=\color{OliveGreen},extendedchars=false,sensitive=false,
+commentstyle=\slshape\color{Gray},basicstyle=\small\ttfamily,
+morekeywords={*,TABLESPACE,AUTOEXTEND,TEMPORARY,PRIVILEGES,DATAFILE,IDENTIFIED,TEMPFILE,TO,ONLINE,USER,NVARCHAR2,REFERENCES}
+}
 \begin{document}
 \section{Création des TableSpaces et des utilisateurs}
 	\begin{enumerate}
@@ -18,31 +21,61 @@ morekeywords={*,TABLESPACE,AUTOEXTEND,TEMPORARY,PRIVILEGES,DATAFILE,IDENTIFIED,T
 			\item Requête : \lstinputlisting[language=SQL, firstline=2, lastline=2, style=OracleSQL]{../Scripts/TP1.sql}
 				Résultat : \texttt{SQL> Tablespace created.}
 			\item Requête : \lstinputlisting[language=SQL, firstline=3, lastline=3, style=OracleSQL]{../Scripts/TP1.sql}
-			Résultat : \texttt{SQL> Tablespace created.}
+			Résultat : \texttt{Tablespace created.}
 		\end{enumerate}
 		\item Requête : \lstinputlisting[language=SQL, firstline=4, lastline=4, style=OracleSQL]{../Scripts/TP1.sql}
-			Résultat : \texttt{SQL> User created.}
+			Résultat : \texttt{User created.}
 		\item Requête : \lstinputlisting[language=SQL, firstline=5, lastline=5, style=OracleSQL]{../Scripts/TP1.sql}
-			Résultat : \texttt{SQL> Grant succeeded.}
+			Résultat : \texttt{Grant succeeded.}
 	\end{enumerate}
 \section{Langage de définition de données}
 	\begin{enumerate}
 		\item[4.] Les clés étrangères :\\
-		\renewcommand{\arraystretch}{1.2}
-		\begin{tabular}{|*{4}{p{4cm}|}}
-		\hline
-		\multicolumn{2}{|c|}{Tableau source} & \multicolumn{2}{|c|}{Tableau destination} \\ \hline
-		Dans le tableau & colonne & Vers le tableau & colonne \\ \hline
-		SERVICE & DIRECTEUR & MEDECIN & NUM-MED \\ \hline
-		CHAMBRE & CODE-SERVICE & SERVICE & CODE-SERVICE \\ \hline
-		CHAMBRE & SURVEILLANT & INFERMIER & NUM-INF \\ \hline
-		MEDECIN & NUM-MED & EMPLOYE & NUM-EMP \\ \hline
-		INFERMIER & CODE-SERVICE & SERVICE & CODE-SERVICE \\ \hline
-		INFERMIER & NUM-INF & EMPLOYE & NUM-EMP \\ \hline
-		HOSPITALISATION & NUM-PATIENT & PATIENT & NUM-PATIENT \\ \hline
-		HOSPITALISATION & CODE-SERVICE & SERVICE & CODE-SERVICE \\ \hline
-		HOSPITALISATION & CODE-SERVICE, NUM-CHAMBRE & CHAMBRE & CODE-SERVICE \\ \hline
-		SOIGNE & NUM-PATIENT & PATIENT & NUM-PATIENT \\ \hline
-		\end{tabular}
+			\renewcommand{\arraystretch}{1.2}
+			\begin{tabular}{|*{4}{p{4cm}|}}
+			\hline
+			\multicolumn{2}{|c|}{Tableau source} & \multicolumn{2}{|c|}{Tableau destination} \\ \hline
+			Dans le tableau & colonne & Vers le tableau & colonne \\ \hline
+			SERVICE & DIRECTEUR & MEDECIN & NUM-MED \\ \hline
+			CHAMBRE & CODE-SERVICE & SERVICE & CODE-SERVICE \\ \hline
+			CHAMBRE & SURVEILLANT & INFERMIER & NUM-INF \\ \hline
+			MEDECIN & NUM-MED & EMPLOYE & NUM-EMP \\ \hline
+			INFERMIER & CODE-SERVICE & SERVICE & CODE-SERVICE \\ \hline
+			INFERMIER & NUM-INF & EMPLOYE & NUM-EMP \\ \hline
+			HOSPITALISATION & NUM-PATIENT & PATIENT & NUM-PATIENT \\ \hline
+			HOSPITALISATION & CODE-SERVICE & SERVICE & CODE-SERVICE \\ \hline
+			HOSPITALISATION & CODE-SERVICE, NUM-CHAMBRE & CHAMBRE & CODE-SERVICE \\ \hline
+			SOIGNE & NUM-PATIENT & PATIENT & NUM-PATIENT \\ \hline
+			\end{tabular}
+		\item Création des relations
+			\begin{enumerate}
+				\item Relation \texttt{SERVICE}
+					\lstinputlisting[firstline=11, lastline=16, style=OracleSQL]{../Scripts/TP1.sql}
+					Résultat : \texttt{Table created.}
+				\item Relation \texttt{CHAMBRE}
+					\lstinputlisting[firstline=18, lastline=23, style=OracleSQL]{../Scripts/TP1.sql}
+					Résultat : \texttt{Table created.}
+				\item Relation \texttt{EMPLOYE}
+					\lstinputlisting[firstline=25, lastline=31, style=OracleSQL]{../Scripts/TP1.sql}
+						Résultat : \texttt{Table created.}
+				\item Relation \texttt{MEDECIN}
+					\lstinputlisting[firstline=33, lastline=36, style=OracleSQL]{../Scripts/TP1.sql}
+						Résultat : \texttt{Table created.}
+				\item Relation \texttt{INFERMIER}
+					\lstinputlisting[firstline=38, lastline=43, style=OracleSQL]{../Scripts/TP1.sql}
+						Résultat : \texttt{Table created.}
+				\item Relation \texttt{PATIENT}
+					\lstinputlisting[firstline=45, lastline=52, style=OracleSQL]{../Scripts/TP1.sql}
+						Résultat : \texttt{Table created.}
+				\item Relation \texttt{HOSPITALISATION}
+					\lstinputlisting[firstline=54, lastline=59, style=OracleSQL]{../Scripts/TP1.sql}
+						Résultat : \texttt{Table created.}
+				\item Relation \texttt{SOIGNE}
+					\lstinputlisting[firstline=61, lastline=64, style=OracleSQL]{../Scripts/TP1.sql}
+						Résultat : \texttt{Table created.}\\
+					Ajout des contraintes
+					\lstinputlisting[firstline=68, lastline=90, style=OracleSQL]{../Scripts/TP1.sql}
+					Résultat : \texttt{Table altered.} (Après chaque requête)
+			\end{enumerate}
 	\end{enumerate}
 \end{document}
