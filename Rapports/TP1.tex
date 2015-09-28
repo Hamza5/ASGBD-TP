@@ -2,7 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[frenchb]{babel}
 \usepackage[T1]{fontenc}
-\usepackage{graphicx}
+\usepackage[left=1.5cm,right=1.5cm,top=2cm,bottom=2cm]{geometry}
 \usepackage{lmodern}
 \usepackage{listings}
 \usepackage[usenames,dvipsnames]{xcolor}
@@ -13,13 +13,36 @@ morekeywords={*,TABLESPACE,AUTOEXTEND,TEMPORARY,PRIVILEGES,DATAFILE,IDENTIFIED,T
 \begin{document}
 \section{Création des TableSpaces et des utilisateurs}
 	\begin{enumerate}
-		\item Requête : \lstinputlisting[language=SQL, firstline=2, lastline=2, style=OracleSQL]{../Scripts/TP1.sql}
+		\item
+		\begin{enumerate}
+			\item Requête : \lstinputlisting[language=SQL, firstline=2, lastline=2, style=OracleSQL]{../Scripts/TP1.sql}
+				Résultat : \texttt{SQL> Tablespace created.}
+			\item Requête : \lstinputlisting[language=SQL, firstline=3, lastline=3, style=OracleSQL]{../Scripts/TP1.sql}
 			Résultat : \texttt{SQL> Tablespace created.}
-		\item Requête : \lstinputlisting[language=SQL, firstline=3, lastline=3, style=OracleSQL]{../Scripts/TP1.sql}
-			Résultat : \texttt{SQL> Tablespace created.}
+		\end{enumerate}
 		\item Requête : \lstinputlisting[language=SQL, firstline=4, lastline=4, style=OracleSQL]{../Scripts/TP1.sql}
 			Résultat : \texttt{SQL> User created.}
 		\item Requête : \lstinputlisting[language=SQL, firstline=5, lastline=5, style=OracleSQL]{../Scripts/TP1.sql}
 			Résultat : \texttt{SQL> Grant succeeded.}
+	\end{enumerate}
+\section{Langage de définition de données}
+	\begin{enumerate}
+		\item[4.] Les clés étrangères :\\
+		\renewcommand{\arraystretch}{1.2}
+		\begin{tabular}{|*{4}{p{4cm}|}}
+		\hline
+		\multicolumn{2}{|c|}{Tableau source} & \multicolumn{2}{|c|}{Tableau destination} \\ \hline
+		Dans le tableau & colonne & Vers le tableau & colonne \\ \hline
+		SERVICE & DIRECTEUR & MEDECIN & NUM-MED \\ \hline
+		CHAMBRE & CODE-SERVICE & SERVICE & CODE-SERVICE \\ \hline
+		CHAMBRE & SURVEILLANT & INFERMIER & NUM-INF \\ \hline
+		MEDECIN & NUM-MED & EMPLOYE & NUM-EMP \\ \hline
+		INFERMIER & CODE-SERVICE & SERVICE & CODE-SERVICE \\ \hline
+		INFERMIER & NUM-INF & EMPLOYE & NUM-EMP \\ \hline
+		HOSPITALISATION & NUM-PATIENT & PATIENT & NUM-PATIENT \\ \hline
+		HOSPITALISATION & CODE-SERVICE & SERVICE & CODE-SERVICE \\ \hline
+		HOSPITALISATION & CODE-SERVICE, NUM-CHAMBRE & CHAMBRE & CODE-SERVICE \\ \hline
+		SOIGNE & NUM-PATIENT & PATIENT & NUM-PATIENT \\ \hline
+		\end{tabular}
 	\end{enumerate}
 \end{document}
