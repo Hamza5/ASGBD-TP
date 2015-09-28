@@ -11,7 +11,7 @@
 \lstdefinestyle{OracleSQL}{language=SQL,breaklines=true, frame=single, keywordstyle=\bfseries\color{Blue},
 keywordstyle=[2]\color{Blue},stringstyle=\color{OliveGreen},extendedchars=false,sensitive=false,
 commentstyle=\slshape\color{Gray},basicstyle=\small\ttfamily,
-morekeywords={*,TABLESPACE,AUTOEXTEND,TEMPORARY,PRIVILEGES,DATAFILE,IDENTIFIED,TEMPFILE,TO,ONLINE,USER,NVARCHAR2,REFERENCES}
+morekeywords={TABLESPACE,AUTOEXTEND,TEMPORARY,PRIVILEGES,DATAFILE,IDENTIFIED,TEMPFILE,TO,ONLINE,USER,NVARCHAR2,REFERENCES,MODIFY}
 }
 \begin{document}
 \section{Création des TableSpaces et des utilisateurs}
@@ -80,6 +80,9 @@ morekeywords={*,TABLESPACE,AUTOEXTEND,TEMPORARY,PRIVILEGES,DATAFILE,IDENTIFIED,T
 			\end{enumerate}
 		\item Ajouter l'attribut \texttt{DATE\_HOST} :
 		\lstinputlisting[firstline=93, lastline=93, style=OracleSQL]{../Scripts/TP1.sql}
+		Résultat : \texttt{Table altered.}
+		\item Ajouter la contrainte \texttt{NOT NULL} aux 2 attributs :
+		\lstinputlisting[firstline=96, lastline=97, style=OracleSQL]{../Scripts/TP1.sql}
 		Résultat : \texttt{Table altered.}
 	\end{enumerate}
 \end{document}
