@@ -95,10 +95,32 @@ morekeywords={TABLESPACE,AUTOEXTEND,TEMPORARY,PRIVILEGES,DATAFILE,IDENTIFIED,TEM
 		Résultat : \texttt{Table altered.}
 		\item Supprimer et recréer la colonne \texttt{TEL\_EMP} :
 		\lstinputlisting[firstline=104, lastline=106, style=OracleSQL]{../Scripts/TP1.sql}
-		Résultat : \texttt{Table altered.}
+		Résultats :\\
+		\texttt{Table altered.}
+		\begin{verbatim}
+		Name                                      Null?    Type
+		----------------------------------------- -------- ----------------------------
+		NUM_EMP                                   NOT NULL NUMBER(4)
+		NOM_EMP                                            NVARCHAR2(50)
+		PRENOM_EMP                                         NVARCHAR2(50)
+		ADRESSE_EMP                                        NVARCHAR2(150)
+		\end{verbatim}
+		\texttt{Table altered.}
 		\item Renommer la colonne \texttt{ADRESSE\_PATIENT} :
 		\lstinputlisting[firstline=109, lastline=110, style=OracleSQL]{../Scripts/TP1.sql}
-		Résultat : \texttt{Table altered.}
+		Résultats :\\
+		\texttt{Table altered.}
+		\begin{verbatim}
+		Name                                      Null?    Type
+		----------------------------------------- -------- ----------------------------
+		NUM_PATIENT                               NOT NULL NUMBER(4)
+		NOM_PATIENT                                        NVARCHAR2(50)
+		PRENOM_PATIENT                                     NVARCHAR2(50)
+		ADR_PAT                                            NVARCHAR2(150)
+		MUTUELLE                                  NOT NULL NVARCHAR2(10)
+		TEL_PATIENT                                        NUMBER(9)
+		\end{verbatim}
+		\texttt{Table altered.}
 		\item Ajouter la contrainte du salaire :
 		\lstinputlisting[firstline=113, lastline=113, style=OracleSQL]{../Scripts/TP1.sql}
 		Résultat : \texttt{Table altered.}
