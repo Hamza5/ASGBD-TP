@@ -6,14 +6,20 @@
 \usepackage[left=1.5cm,right=1.5cm,top=2cm,bottom=2cm]{geometry}
 \usepackage{listings}
 \usepackage[usenames,dvipsnames]{xcolor}
-\author{Hamza Abbad}
-\title{Rapport de TP ASGBD}
+\usepackage{fancyhdr}
+\author{Hamza ABBAD}
+\title{\textbf{Rapport de TP ASGBD} \\ TP $n^{\circ}$1}
 \lstdefinestyle{OracleSQL}{language=SQL,breaklines=true, frame=single, keywordstyle=\bfseries\color{Blue},
 keywordstyle=[2]\color{Blue},stringstyle=\color{OliveGreen},extendedchars=false,sensitive=false,
 commentstyle=\slshape\color{Gray},basicstyle=\small\ttfamily,
 morekeywords={TABLESPACE,AUTOEXTEND,TEMPORARY,PRIVILEGES,DATAFILE,IDENTIFIED,TEMPFILE,TO,ONLINE,USER,NVARCHAR2,REFERENCES,MODIFY}
 }
+\pagestyle{fancyplain}
+\lhead{Hamza ABBAD}
+\chead{201200006342}
+\rhead{SII M1 - Groupe 2}
 \begin{document}
+\maketitle
 \section{Création des TableSpaces et des utilisateurs}
 	\begin{enumerate}
 		\item
@@ -95,6 +101,9 @@ morekeywords={TABLESPACE,AUTOEXTEND,TEMPORARY,PRIVILEGES,DATAFILE,IDENTIFIED,TEM
 		Résultat : \texttt{Table altered.}
 		\item Ajouter la contrainte du salaire :
 		\lstinputlisting[firstline=113, lastline=113, style=OracleSQL]{../Scripts/TP1.sql}
+		Résultat : \texttt{Table altered.}
+		\item Ajouter la contrainte qui impose que chaque médecin doit avoir une spécialité :
+		\lstinputlisting[firstline=116, lastline=116, style=OracleSQL]{../Scripts/TP1.sql}
 		Résultat : \texttt{Table altered.}
 	\end{enumerate}
 \end{document}
