@@ -7,7 +7,7 @@
 \usepackage{listings}
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{fancyhdr}
-\author{Hamza ABBAD}
+\author{Hamza ABBAD\\ Master Systèmes Informatiques Intelligents}
 \title{\textbf{Rapport de TP ASGBD} \\ TP $n^{\circ}$1}
 \lstdefinestyle{OracleSQL}{language=SQL,breaklines=true, frame=single, keywordstyle=\bfseries\color{Blue},
 keywordstyle=[2]\color{Blue},stringstyle=\color{OliveGreen},extendedchars=false,sensitive=false,
@@ -45,10 +45,10 @@ morekeywords={TABLESPACE,AUTOEXTEND,TEMPORARY,PRIVILEGES,DATAFILE,IDENTIFIED,TEM
 			Dans le tableau & colonne & Vers le tableau & colonne \\ \hline
 			SERVICE & DIRECTEUR & MEDECIN & NUM-MED \\ \hline
 			CHAMBRE & CODE-SERVICE & SERVICE & CODE-SERVICE \\ \hline
-			CHAMBRE & SURVEILLANT & INFERMIER & NUM-INF \\ \hline
+			CHAMBRE & SURVEILLANT & INFIRMIER & NUM-INF \\ \hline
 			MEDECIN & NUM-MED & EMPLOYE & NUM-EMP \\ \hline
-			INFERMIER & CODE-SERVICE & SERVICE & CODE-SERVICE \\ \hline
-			INFERMIER & NUM-INF & EMPLOYE & NUM-EMP \\ \hline
+			INFIRMIER & CODE-SERVICE & SERVICE & CODE-SERVICE \\ \hline
+			INFIRMIER & NUM-INF & EMPLOYE & NUM-EMP \\ \hline
 			HOSPITALISATION & NUM-PATIENT & PATIENT & NUM-PATIENT \\ \hline
 			HOSPITALISATION & CODE-SERVICE & SERVICE & CODE-SERVICE \\ \hline
 			HOSPITALISATION & CODE-SERVICE, NUM-CHAMBRE & CHAMBRE & CODE-SERVICE \\ \hline
@@ -68,7 +68,7 @@ morekeywords={TABLESPACE,AUTOEXTEND,TEMPORARY,PRIVILEGES,DATAFILE,IDENTIFIED,TEM
 				\item Relation \texttt{MEDECIN}
 					\lstinputlisting[firstline=33, lastline=36, style=OracleSQL]{../Scripts/TP1.sql}
 						Résultat : \texttt{Table created.}
-				\item Relation \texttt{INFERMIER}
+				\item Relation \texttt{INFIRMIER}
 					\lstinputlisting[firstline=38, lastline=43, style=OracleSQL]{../Scripts/TP1.sql}
 						Résultat : \texttt{Table created.}
 				\item Relation \texttt{PATIENT}
@@ -120,12 +120,28 @@ morekeywords={TABLESPACE,AUTOEXTEND,TEMPORARY,PRIVILEGES,DATAFILE,IDENTIFIED,TEM
 		MUTUELLE                                  NOT NULL NVARCHAR2(10)
 		TEL_PATIENT                                        NUMBER(9)
 		\end{verbatim}
-		\texttt{Table altered.}
 		\item Ajouter la contrainte du salaire :
 		\lstinputlisting[firstline=113, lastline=113, style=OracleSQL]{../Scripts/TP1.sql}
 		Résultat : \texttt{Table altered.}
 		\item Ajouter la contrainte qui impose que chaque médecin doit avoir une spécialité :
 		\lstinputlisting[firstline=116, lastline=116, style=OracleSQL]{../Scripts/TP1.sql}
 		Résultat : \texttt{Table altered.}
+	\end{enumerate}
+	\vspace{1em}
+\section{Langage de manipulation de données}
+	\begin{enumerate}
+		\setcounter{enumi}{12}
+		\item Remplir les instances :\\
+		Nous devons commencer par insérer les valeurs du tableau \texttt{EMPLOYE} car ce tableau
+		ne contient aucune clé étrangère, donc ses valeurs ne dépendent pas des valeurs d'autres
+		tableaux. Ensuite, nous pouvons insérer les valeurs du tableau \texttt{MEDECIN} car la colonne \texttt{NUM\_MED}
+		a une contrainte de clé étrangère vers la colonne \texttt{NUM\_EMP} du tableau \texttt{EMPLOYE}.
+		Ensuite \texttt{SERVICE} car il dépend de \texttt{MEDECIN}. Ensuite \texttt{INFIRMIER} car il
+		dépend de \texttt{SERVICE}. Ensuite \texttt{CHAMBRE} car il dépend de \texttt{INFIRMIER}. L'insertion
+		des valeurs du tableau \texttt{HOSPITALISATION} doit être précédée par l'insertion des valeurs
+		des tableaux \texttt{PATIENT}, \texttt{SERVICE}, et \texttt{CHAMBRE}. Les valeurs du tableau
+		\texttt{SOIGNE} doivent être insérées après l'insertion des valeurs des tableaux \texttt{MEDECIN}
+		et \texttt{PATIENT}.\\
+		Les instructions \texttt{INSERT INTO} correspendantes sont dans le script \texttt{\bfseries TP1.sql}.
 	\end{enumerate}
 \end{document}
