@@ -12,7 +12,8 @@
 \lstdefinestyle{OracleSQL}{language=SQL,breaklines=true, frame=single, keywordstyle=\bfseries\color{Blue},
 keywordstyle=[2]\color{Blue},stringstyle=\color{OliveGreen},extendedchars=false,sensitive=false,
 commentstyle=\slshape\color{Gray},basicstyle=\small\ttfamily,
-morekeywords={TABLESPACE,AUTOEXTEND,TEMPORARY,PRIVILEGES,DATAFILE,IDENTIFIED,TEMPFILE,TO,ONLINE,USER,NVARCHAR2,REFERENCES,MODIFY}
+morekeywords={TABLESPACE,AUTOEXTEND,TEMPORARY,PRIVILEGES,DATAFILE,IDENTIFIED,TEMPFILE,TO,ONLINE,USER,NVARCHAR2,REFERENCES,
+MODIFY,RENAME}
 }
 \pagestyle{fancyplain}
 \lhead{Hamza ABBAD}
@@ -143,5 +144,15 @@ morekeywords={TABLESPACE,AUTOEXTEND,TEMPORARY,PRIVILEGES,DATAFILE,IDENTIFIED,TEM
 		\texttt{SOIGNE} doivent être insérées après l'insertion des valeurs des tableaux \texttt{MEDECIN}
 		et \texttt{PATIENT}.\\
 		Les instructions \texttt{INSERT INTO} correspendantes sont dans le script \texttt{\bfseries TP1.sql}.
+		\item Les étapes nécessaires pour que "Murray Andy" soit le nouveau directeur de Cardiologie :
+		\begin{enumerate}
+			\item Ajouter une ligne dans le tableau \texttt{EMPLOYE} contenant le numéro, le nom, le prénom,
+			l'adresse et le téléphone de ce medecin.
+			\item Ajouter une ligne dans le tableau \texttt{MEDECIN} contenant le numéro de ce medecin et
+			 \texttt{'Cardiologue'}.
+			\item Mettre à jour la colonne \texttt{DIRECTEUR} dans le tableau \texttt{SERVICE} au niveau de
+			la ligne qui à la colonne \texttt{CODE\_SERVICE} égale à \texttt{'CAR'}.
+		\end{enumerate}
+		\lstinputlisting[firstline=558, lastline=561, style=OracleSQL, extendedchars=true]{../Scripts/TP1.sql}
 	\end{enumerate}
 \end{document}
