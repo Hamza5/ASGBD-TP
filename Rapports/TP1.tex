@@ -13,7 +13,7 @@
 keywordstyle=[2]\color{Blue},stringstyle=\color{OliveGreen},extendedchars=false,sensitive=false,
 commentstyle=\slshape\color{Gray},basicstyle=\small\ttfamily,
 morekeywords={TABLESPACE,AUTOEXTEND,TEMPORARY,PRIVILEGES,DATAFILE,IDENTIFIED,TEMPFILE,TO,ONLINE,USER,NVARCHAR2,REFERENCES,
-MODIFY,RENAME}
+MODIFY,RENAME,DISABLE}
 }
 \pagestyle{fancyplain}
 \lhead{Hamza ABBAD}
@@ -154,5 +154,29 @@ MODIFY,RENAME}
 			la ligne qui à la colonne \texttt{CODE\_SERVICE} égale à \texttt{'CAR'}.
 		\end{enumerate}
 		\lstinputlisting[firstline=558, lastline=561, style=OracleSQL, extendedchars=true]{../Scripts/TP1.sql}
+		\item Diminuer 5000 du salaire :
+		\lstinputlisting[firstline=564, lastline=564, style=OracleSQL, extendedchars=true]{../Scripts/TP1.sql}
+		Resultat :
+		\begin{verbatim}
+		UPDATE INFIRMIER SET SALAIRE = SALAIRE - 5000 WHERE ROTATION = 'JOUR'
+		*
+		ERROR at line 1:
+		ORA-02290: check constraint (ABBAD.CHK_SALAIRE) violated
+		\end{verbatim}
+		Désactiver la contrainte :
+		\lstinputlisting[firstline=565, lastline=565, style=OracleSQL, extendedchars=true]{../Scripts/TP1.sql}
+		Resultat : \texttt{Table altered.}\\
+		Réessayer :
+		\lstinputlisting[firstline=564, lastline=564, style=OracleSQL, extendedchars=true]{../Scripts/TP1.sql}
+		Resultat : \texttt{14 rows updated.}\\
+		Réactiver la contrainte
+		\lstinputlisting[firstline=566, lastline=566, style=OracleSQL, extendedchars=true]{../Scripts/TP1.sql}
+		Resultat :
+		\begin{verbatim}
+		ALTER TABLE INFIRMIER ENABLE CONSTRAINT CHK_SALAIRE
+		                                        *
+		ERROR at line 1:
+		ORA-02293: cannot validate (ABBAD.CHK_SALAIRE) - check constraint violated
+		\end{verbatim}
 	\end{enumerate}
 \end{document}
