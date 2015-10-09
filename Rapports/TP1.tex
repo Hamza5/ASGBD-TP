@@ -82,20 +82,20 @@ MODIFY,RENAME,DISABLE}
 					\lstinputlisting[firstline=61, lastline=64, style=OracleSQL]{../Scripts/TP1.sql}
 						Résultat : \texttt{Table created.}\\
 				Ajout des contraintes
-				\lstinputlisting[firstline=68, lastline=90, style=OracleSQL]{../Scripts/TP1.sql}
+				\lstinputlisting[firstline=68, lastline=92, style=OracleSQL]{../Scripts/TP1.sql}
 				Résultat : \texttt{Table altered.} (Après chaque requête)
 			\end{enumerate}
 		\item Ajouter l'attribut \texttt{DATE\_HOST} :
-		\lstinputlisting[firstline=93, lastline=93, style=OracleSQL]{../Scripts/TP1.sql}
+		\lstinputlisting[firstline=95, lastline=95, style=OracleSQL]{../Scripts/TP1.sql}
 		Résultat : \texttt{Table altered.}
 		\item Ajouter la contrainte \texttt{NOT NULL} aux 2 attributs :
-		\lstinputlisting[firstline=96, lastline=97, style=OracleSQL]{../Scripts/TP1.sql}
+		\lstinputlisting[firstline=98, lastline=99, style=OracleSQL]{../Scripts/TP1.sql}
 		Résultat : \texttt{Table altered.}
 		\item Modifier la longueur de \texttt{PRENOM\_PATIENT} :
-		\lstinputlisting[firstline=100, lastline=101, style=OracleSQL]{../Scripts/TP1.sql}
+		\lstinputlisting[firstline=102, lastline=103, style=OracleSQL]{../Scripts/TP1.sql}
 		Résultat : \texttt{Table altered.}
 		\item Supprimer et recréer la colonne \texttt{TEL\_EMP} :
-		\lstinputlisting[firstline=104, lastline=106, style=OracleSQL]{../Scripts/TP1.sql}
+		\lstinputlisting[firstline=106, lastline=108, style=OracleSQL]{../Scripts/TP1.sql}
 		Résultats :\\
 		\texttt{Table altered.}
 		\begin{verbatim}
@@ -108,7 +108,7 @@ MODIFY,RENAME,DISABLE}
 		\end{verbatim}
 		\texttt{Table altered.}
 		\item Renommer la colonne \texttt{ADRESSE\_PATIENT} :
-		\lstinputlisting[firstline=109, lastline=110, style=OracleSQL]{../Scripts/TP1.sql}
+		\lstinputlisting[firstline=111, lastline=112, style=OracleSQL]{../Scripts/TP1.sql}
 		Résultats :\\
 		\texttt{Table altered.}
 		\begin{verbatim}
@@ -122,10 +122,10 @@ MODIFY,RENAME,DISABLE}
 		TEL_PATIENT                                        NUMBER(9)
 		\end{verbatim}
 		\item Ajouter la contrainte du salaire :
-		\lstinputlisting[firstline=113, lastline=113, style=OracleSQL]{../Scripts/TP1.sql}
+		\lstinputlisting[firstline=115, lastline=115, style=OracleSQL]{../Scripts/TP1.sql}
 		Résultat : \texttt{Table altered.}
 		\item Ajouter la contrainte qui impose que chaque médecin doit avoir une spécialité :
-		\lstinputlisting[firstline=116, lastline=116, style=OracleSQL]{../Scripts/TP1.sql}
+		\lstinputlisting[firstline=118, lastline=118, style=OracleSQL]{../Scripts/TP1.sql}
 		Résultat : \texttt{Table altered.}
 	\end{enumerate}
 	\vspace{1em}
@@ -153,9 +153,9 @@ MODIFY,RENAME,DISABLE}
 			\item Mettre à jour la colonne \texttt{DIRECTEUR} dans le tableau \texttt{SERVICE} au niveau de
 			la ligne qui à la colonne \texttt{CODE\_SERVICE} égale à \texttt{'CAR'}.
 		\end{enumerate}
-		\lstinputlisting[firstline=558, lastline=561, style=OracleSQL, extendedchars=true]{../Scripts/TP1.sql}
+		\lstinputlisting[firstline=561, lastline=563, style=OracleSQL, extendedchars=true]{../Scripts/TP1.sql}
 		\item Diminuer 5000 du salaire :
-		\lstinputlisting[firstline=564, lastline=564, style=OracleSQL, extendedchars=true]{../Scripts/TP1.sql}
+		\lstinputlisting[firstline=567, lastline=567, style=OracleSQL, extendedchars=true]{../Scripts/TP1.sql}
 		Resultat :
 		\begin{verbatim}
 		UPDATE INFIRMIER SET SALAIRE = SALAIRE - 5000 WHERE ROTATION = 'JOUR'
@@ -164,13 +164,13 @@ MODIFY,RENAME,DISABLE}
 		ORA-02290: check constraint (ABBAD.CHK_SALAIRE) violated
 		\end{verbatim}
 		Désactiver la contrainte :
-		\lstinputlisting[firstline=565, lastline=565, style=OracleSQL, extendedchars=true]{../Scripts/TP1.sql}
+		\lstinputlisting[firstline=568, lastline=568, style=OracleSQL, extendedchars=true]{../Scripts/TP1.sql}
 		Resultat : \texttt{Table altered.}\\
 		Réessayer :
-		\lstinputlisting[firstline=564, lastline=564, style=OracleSQL, extendedchars=true]{../Scripts/TP1.sql}
+		\lstinputlisting[firstline=567, lastline=567, style=OracleSQL, extendedchars=true]{../Scripts/TP1.sql}
 		Resultat : \texttt{14 rows updated.}\\
 		Réactiver la contrainte
-		\lstinputlisting[firstline=566, lastline=566, style=OracleSQL, extendedchars=true]{../Scripts/TP1.sql}
+		\lstinputlisting[firstline=569, lastline=569, style=OracleSQL, extendedchars=true]{../Scripts/TP1.sql}
 		Resultat :
 		\begin{verbatim}
 		ALTER TABLE INFIRMIER ENABLE CONSTRAINT CHK_SALAIRE
@@ -178,5 +178,16 @@ MODIFY,RENAME,DISABLE}
 		ERROR at line 1:
 		ORA-02293: cannot validate (ABBAD.CHK_SALAIRE) - check constraint violated
 		\end{verbatim}
+		\item Supprimer les cardiologues :
+		\lstinputlisting[firstline=572, lastline=572, style=OracleSQL, extendedchars=true]{../Scripts/TP1.sql}
+		Resultat :
+		\begin{verbatim}
+		DELETE FROM MEDECIN WHERE TRIM(SPECIALITE) = 'Cardiologue'
+		*
+		ERROR at line 1:
+		ORA-01407: cannot update ("ABBAD"."SOIGNE"."NUM_MED") to NULL
+		\end{verbatim}
+		Ce n'est pas possible de supprimer ces lignes car certaines valeurs de la colonne \texttt{NUM\_MED} du
+		tableau \texttt{SOIGNE} dépend des valeurs de la colonne \texttt{NUM\_MED} de \texttt{MEDECIN}.
 	\end{enumerate}
 \end{document}
