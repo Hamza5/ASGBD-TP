@@ -189,5 +189,7 @@ MODIFY,RENAME,DISABLE}
 		\end{verbatim}
 		Ce n'est pas possible de supprimer ces lignes car certaines valeurs de la colonne \texttt{NUM\_MED} du
 		tableau \texttt{SOIGNE} dépend des valeurs de la colonne \texttt{NUM\_MED} de \texttt{MEDECIN}.
+		\item Il faut créer un index sur cette colonne :
+		\lstinputlisting[firstline=575, lastline=575, style=OracleSQL, extendedchars=true]{../Scripts/TP1.sql}
 	\end{enumerate}
 \end{document}
