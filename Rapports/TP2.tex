@@ -59,5 +59,10 @@ MODIFY,RENAME,DISABLE}
 	ORA-01031: insufficient privileges
 	\end{verbatim}
 	Ce qui signifie que cet utilisateur n'a pas le droit de faire une telle modification.
+	\item A partir de l'utilisateur \texttt{SYSTEM}, on peut donner les droits de mise à jour à cet utilisateur
+	pour la table \texttt{PATIENT} :
+	\lstinputlisting[firstline=44, lastline=45, style=OracleSQL, extendedchars=true]{../Scripts/TP2.sql}
+	Ensuite on peut exécuter la requête précédente à partir de l'utilisateur \texttt{AdminHopital}.
+	\lstinputlisting[firstline=47, lastline=48, style=OracleSQL]{../Scripts/TP2.sql}
 \end{enumerate}
 \end{document}

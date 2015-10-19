@@ -22,7 +22,7 @@ ORA-00942: table or view does not exist
 */
 
 /* Question 6 */
-GRANT SELECT ON PATIENT TO AdminHopital;
+GRANT SELECT ON Abbad.PATIENT TO AdminHopital;
 -- Grant succeeded.
 
 SELECT * FROM Abbad.PATIENT;
@@ -39,3 +39,10 @@ UPDATE Abbad.PATIENT SET ADR_PAT = '152, rue Hassiba Ben Bouali 2ème étage -Ha
 ERROR at line 1:
 ORA-01031: insufficient privileges
 */
+
+/* Question 8 */
+GRANT UPDATE ON Abbad.PATIENT TO AdminHopital;
+-- Grant succeeded.
+
+UPDATE Abbad.PATIENT SET ADR_PAT = '152, rue Hassiba Ben Bouali 2ème étage -Hamma-Alger' WHERE NOM_PATIENT = 'HADJ' AND PRENOM_PATIENT = 'Haroun';
+-- 1 row updated.
