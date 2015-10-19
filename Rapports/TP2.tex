@@ -44,8 +44,20 @@ MODIFY,RENAME,DISABLE}
 	\end{verbatim}
 	Le SGBD n'arrive pas a récupérer la table car l'utilisateur courant n'a pas le droit de la consulter.
 	\item Donner les droits de lecture à l'utilisateur \texttt{AdminHopital} pour la table \texttt{PATIENT} :
-	\lstinputlisting[firstline=23, lastline=24, style=OracleSQL]{../Scripts/TP2.sql}
+	\lstinputlisting[firstline=25, lastline=26, style=OracleSQL]{../Scripts/TP2.sql}
 	Maintenat on peut exécuter la requête :
-	\lstinputlisting[firstline=26, lastline=31, style=OracleSQL]{../Scripts/TP2.sql}
+	\lstinputlisting[firstline=28, lastline=32, style=OracleSQL]{../Scripts/TP2.sql}
+	\item Quand on essaye de changer l'adresse du patient en utilisant l'utilisateur \texttt{AdminHopital}
+	en utilisant cette requête :
+	\lstinputlisting[firstline=35, lastline=35, style=OracleSQL]{../Scripts/TP2.sql}
+	L'erreur suivante se produit :
+	\begin{verbatim}
+	UPDATE Abbad.PATIENT SET ADR_PAT = '152, rue Hassiba Ben Bouali 2ème étage 
+	-Hamma-Alger' WHERE NOM_PATIENT = 'HADJ' AND 		PRENOM_PATIENT = 'Haroun'
+    	         *
+	ERROR at line 1:
+	ORA-01031: insufficient privileges
+	\end{verbatim}
+	Ce qui signifie que cet utilisateur n'a pas le droit de faire une telle modification.
 \end{enumerate}
 \end{document}

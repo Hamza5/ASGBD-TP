@@ -12,6 +12,7 @@ GRANT CREATE SESSION TO AdminHopital;
 GRANT CREATE TABLE, CREATE USER TO AdminHopital;
 -- Grant succeeded.
 
+/* Question 5 */
 SELECT * FROM Abbad.PATIENT;
 /*
 SELECT * FROM Abbad.PATIENT
@@ -20,6 +21,7 @@ ERROR at line 1:
 ORA-00942: table or view does not exist
 */
 
+/* Question 6 */
 GRANT SELECT ON PATIENT TO AdminHopital;
 -- Grant succeeded.
 
@@ -27,4 +29,13 @@ SELECT * FROM Abbad.PATIENT;
 /*
 ...
 80 rows selected.
+*/
+
+/* Question 7 */
+UPDATE Abbad.PATIENT SET ADR_PAT = '152, rue Hassiba Ben Bouali 2ème étage -Hamma-Alger' WHERE NOM_PATIENT = 'HADJ' AND PRENOM_PATIENT = 'Haroun';
+/*
+UPDATE Abbad.PATIENT SET ADR_PAT = '152, rue Hassiba Ben Bouali 2ème étage -Hamma-Alger' WHERE NOM_PATIENT = 'HADJ' AND PRENOM_PATIENT = 'Haroun'
+             *
+ERROR at line 1:
+ORA-01031: insufficient privileges
 */
