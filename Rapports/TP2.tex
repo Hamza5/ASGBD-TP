@@ -81,5 +81,8 @@ MODIFY,RENAME,DISABLE}
 	\lstinputlisting[firstline=62, lastline=63, style=OracleSQL]{../Scripts/TP2.sql}
 	\item Enlever les privilèges précédemment accordés :
 	\lstinputlisting[firstline=66, lastline=70, style=OracleSQL]{../Scripts/TP2.sql}
+	\item Après l'exécution des requêtes précédentes par le \texttt{SYSTEM}, l'utilisateur \texttt{AdminHopital}
+	ne poura plus créer des utilisateurs, tableaux ou indexes, et il ne poura ni voir ni modifier le contenu
+	d'un tableau s'il était connecté pendant l'exécution requêtes précédentes, sinon, il ne peut même pas se connecter.
 \end{enumerate}
 \end{document}
