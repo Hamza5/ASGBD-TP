@@ -46,3 +46,12 @@ GRANT UPDATE ON Abbad.PATIENT TO AdminHopital;
 
 UPDATE Abbad.PATIENT SET ADR_PAT = '152, rue Hassiba Ben Bouali 2ème étage -Hamma-Alger' WHERE NOM_PATIENT = 'HADJ' AND PRENOM_PATIENT = 'Haroun';
 -- 1 row updated.
+
+/* Question 9 */
+CREATE INDEX PatientMutuelle_IX ON Abbad.PATIENT(MUTUELLE) TABLESPACE AdminHopital;
+/*
+CREATE INDEX PatientMutuelle_IX ON Abbad.PATIENT(MUTUELLE) TABLESPACE AdminHopital
+                                         *
+ERROR at line 1:
+ORA-01031: insufficient privileges
+*/

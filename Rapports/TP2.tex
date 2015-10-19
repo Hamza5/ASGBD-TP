@@ -64,5 +64,15 @@ MODIFY,RENAME,DISABLE}
 	\lstinputlisting[firstline=44, lastline=45, style=OracleSQL, extendedchars=true]{../Scripts/TP2.sql}
 	Ensuite on peut exécuter la requête précédente à partir de l'utilisateur \texttt{AdminHopital}.
 	\lstinputlisting[firstline=47, lastline=48, style=OracleSQL]{../Scripts/TP2.sql}
+	\item L'utilisateur \texttt{AdminHopital} ne peut pas créer l'index, à l'exécution de cette requête :
+	\lstinputlisting[firstline=51, lastline=51, style=OracleSQL]{../Scripts/TP2.sql}
+	Il obtient l'erreur suivante :
+	\begin{verbatim}
+	CREATE INDEX PatientMutuelle_IX ON Abbad.PATIENT(MUTUELLE) TABLESPACE AdminHopital
+	                                         *
+	ERROR at line 1:
+	ORA-01031: insufficient privileges
+	\end{verbatim}
+	Ce qui signifie que l'utilisateur n'a pas le privilège nécessaire pour créer les indexes.
 \end{enumerate}
 \end{document}
