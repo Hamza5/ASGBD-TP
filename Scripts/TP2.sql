@@ -55,3 +55,9 @@ CREATE INDEX PatientMutuelle_IX ON Abbad.PATIENT(MUTUELLE) TABLESPACE AdminHopit
 ERROR at line 1:
 ORA-01031: insufficient privileges
 */
+
+/* Question 10 */
+GRANT CREATE ANY INDEX TO AdminHopital;
+
+CREATE INDEX PatientMutuelle_IX ON Abbad.PATIENT(MUTUELLE) TABLESPACE AdminHopital;
+-- Index created.

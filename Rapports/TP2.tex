@@ -74,5 +74,10 @@ MODIFY,RENAME,DISABLE}
 	ORA-01031: insufficient privileges
 	\end{verbatim}
 	Ce qui signifie que l'utilisateur n'a pas le privilège nécessaire pour créer les indexes.
+	\item Pour autoriser l'utilisateur \texttt{AdminHopital} à créer les indexes, on exécute cette requête
+	à partir de l'utilisateur \texttt{SYSTEM} :
+	\lstinputlisting[firstline=60, lastline=60, style=OracleSQL]{../Scripts/TP2.sql}
+	Réessayer à partir de \texttt{AdminHopital} :
+	\lstinputlisting[firstline=62, lastline=63, style=OracleSQL]{../Scripts/TP2.sql}
 \end{enumerate}
 \end{document}
