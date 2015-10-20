@@ -87,3 +87,12 @@ PASSWORD_GRACE_TIME 10;
 
 /* Question 14 */
 ALTER USER AdminHopital PROFILE Admin_Profil;
+-- User altered.
+
+/* Question 15 */
+CREATE ROLE GestionnairePatient;
+-- Role created.
+GRANT SELECT ON Abbad.PATIENT TO GestionnairePatient;
+GRANT SELECT ON Abbad.SOIGNE TO GestionnairePatient;
+GRANT INSERT, UPDATE, DELETE ON Abbad.HOSPITALISATION TO GestionnairePatient;
+-- Grant succeeded.
