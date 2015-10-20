@@ -90,5 +90,11 @@ MODIFY,RENAME,DISABLE}
 	\lstinputlisting[firstline=89, lastline=90, style=OracleSQL]{../Scripts/TP2.sql}
 	\item Création du rôle \texttt{GestionnairePatient} :
 	\lstinputlisting[firstline=93, lastline=98, style=OracleSQL]{../Scripts/TP2.sql}
+	\item Assigner le rôle :
+	\lstinputlisting[firstline=101, lastline=102, style=OracleSQL]{../Scripts/TP2.sql}
+	L'utilisateur \texttt{AdminHopital} peut maintenant exécuter des requêtes \texttt{SELECT} sur \texttt{PATIENT}
+	et \texttt{SOIGNE}, et des requêtes \texttt{INSERT}, \texttt{DELETE}, et \texttt{UPDATE} sur la
+	table \texttt{HOSPITALISATION}, mais il doit avoir d'abord le privilège \texttt{CREATE SESSION} pour qu'il
+	puisse se connecter.
 \end{enumerate}
 \end{document}

@@ -96,3 +96,7 @@ GRANT SELECT ON Abbad.PATIENT TO GestionnairePatient;
 GRANT SELECT ON Abbad.SOIGNE TO GestionnairePatient;
 GRANT INSERT, UPDATE, DELETE ON Abbad.HOSPITALISATION TO GestionnairePatient;
 -- Grant succeeded.
+
+/* Question 16 */
+GRANT GestionnairePatient TO AdminHopital;
+-- Grant succeeded.
