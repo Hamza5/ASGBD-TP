@@ -9,3 +9,5 @@
 # Backup
 *.bak
 *.docx
+# Latex-Plus : Atom editor plug-in
+.latex
