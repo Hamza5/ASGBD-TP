@@ -88,5 +88,10 @@ MODIFY,RENAME,DISABLE}
 		\item \texttt{GRANTABLE} : Indique si le privilege a été attribué en utilisant le \texttt{GRANT OPTION}.
 		\item \texttt{HIERARCHY} : Indique si le privilege a été attribué en utilisant le \texttt{HIERARCHY OPTION}.
 	\end{itemize}
+	\item Pour trouver le nom de l'utilisateur courant, il suffit d'exécuter la requête suivante :
+	\begin{verbatim}
+		SELECT USERNAME FROM USER_USERS;
+	\end{verbatim}
+	Résultat : \texttt{SYS}.
 \end{enumerate}
 \end{document}
