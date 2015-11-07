@@ -28,10 +28,10 @@ MODIFY,RENAME,DISABLE}
 	\end{lstlisting}
 	Elle retourne un grand nombre de lignes, dans mon cas, il a 1821 lignes. Il contient 2 colonnes :
 	\begin{enumerate}
-		\item \texttt{TABLE\_NAME} qui contient le nom de chaque tableau dans la méta-base.
-		\item \texttt{COMMENTS} qui contient la description du contenu de ce tableau.
+		\item \texttt{TABLE\_NAME} qui contient le nom de chaque table dans la méta-base.
+		\item \texttt{COMMENTS} qui contient la description du contenu de cette table.
 	\end{enumerate}
-	\item Le tableau \texttt{ALL\_TAB\_COLUMNS} décrit les colonnes des tables et vues accessibles à l'utilisateur courant, et
+	\item La table \texttt{ALL\_TAB\_COLUMNS} décrit les colonnes des tables et vues accessibles à l'utilisateur courant, et
 	comme cet utilisateur est \texttt{SYSTEM}, on voit tout les tables existantes.
 	Ce tabeau contient 31 colonnes, parmi eux on trouve :
 	\begin{itemize}
@@ -50,7 +50,7 @@ MODIFY,RENAME,DISABLE}
 		\item \texttt{HIGH\_VALUE} : La plus grande valeur dans la colonne.
 		\item \texttt{NUM\_NULLS} : Nombre de valeurs \texttt{NULL} dans la colonne.
 	\end{itemize}
-	Le tableau \texttt{USER\_USERS} décrit l'utilisateur courant. Il contient 10 colonnes :
+	La table \texttt{USER\_USERS} décrit l'utilisateur courant. Il contient 10 colonnes :
 	\begin{itemize}
 		\item \texttt{USERNAME} : Le nom de l'utilisateur.
 		\item \texttt{USER\_ID} : L'identificateur de l'utilisateur.
@@ -63,21 +63,21 @@ MODIFY,RENAME,DISABLE}
 		\item \texttt{INITIAL\_RSRC\_CONSUMER\_GROUP}.
 		\item \texttt{EXTERNAL\_NAME}.
 	\end{itemize}
-	Le tableau \texttt{ALL\_CONSTRAINTS} décrit tout les contraintes d'integrité qui sont accessibles à l'utilisateur courant.
+	La table \texttt{ALL\_CONSTRAINTS} décrit tout les contraintes d'integrité qui sont accessibles à l'utilisateur courant.
 	Comme on est connecté avec \texttt{SYSTEM}, alors on peut voir tout les contraintes existantes.
-	Ce tableau contient 21 colonnes, parmi ces colonnes on trouve :
+	Cette table contient 21 colonnes, parmi ces colonnes on trouve :
 	\begin{itemize}
 		\item \texttt{OWNER} : Le nom de l'utilisateur propriétaire de la contrainte.
 		\item \texttt{CONSTRAINT\_NAME} : Le nom de la contrainte.
 		\item \texttt{CONSTRAINT\_TYPE} : Le type de la contrainte.
 		\item \texttt{TABLE\_NAME} : La table/vue qui associé à la contrainte.
-		\item \texttt{R\_OWNER} : Le nom de l'utilisateur propriétaire du tableau référencée (Si la contrainte est référentielle).
-		\item \texttt{R\_CONSTRAINT\_NAME} : Le nom de la contrainte dans le tableau référencée (Si la contrainte est référentielle).
+		\item \texttt{R\_OWNER} : Le nom de l'utilisateur propriétaire de la table référencée (Si la contrainte est référentielle).
+		\item \texttt{R\_CONSTRAINT\_NAME} : Le nom de la contrainte dans la table référencée (Si la contrainte est référentielle).
 		\item \texttt{DELETE\_RULE} : La règle de suppression pour les contraintes référentielles.
 		\item \texttt{STATUS} : \'{E}tat d'activation de la contrainte.
 		\item \texttt{LAST\_CHANGE} : La dernière date d'activation/désactivation de la contrainte.
 	\end{itemize}
-	Le tableau \texttt{USER\_TAB\_PRIVS} décrit les privilèges des objets dont l'utilisateur courant il est le propriétaire,
+	La table \texttt{USER\_TAB\_PRIVS} décrit les privilèges des objets dont l'utilisateur courant il est le propriétaire,
 	le concédent ou le titulaire du privilège. Il contient 7 colonnes :
 	\begin{itemize}
 		\item \texttt{GRANTEE} : Le nom de l'utilisateur dont le privilège est accordé.
@@ -93,15 +93,22 @@ MODIFY,RENAME,DISABLE}
 		SELECT USERNAME FROM USER_USERS;
 	\end{lstlisting}
 	Résultat : \texttt{SYS}.
-	\item La différence entre les tableaux \texttt{ALL\_TAB\_COLUMNS} et \texttt{USER\_TAB\_COLUMNS} est que le premier contient
-	les colonnes des tableaux que l'utilisateur courant a le privilège de les consulter, par contre le second ne contient que les
-	colonnes des tableaux dont il est le propriétaire. C'est pour cela que le tableau \texttt{ALL\_TAB\_COLUMNS} contient une colonne
-	supplémentaire \texttt{OWNER} indiquant le propriétaire du tableau.
-	\item On peut vérifier que les tableaux ont été créer en récupérant la colonne \texttt{TABLE\_NAME} du tableau \texttt{ALL\_TABLES}
-	ou \texttt{OWNER} égale au nom de l'utilisateur qui a créé le tableau.
+	\item La différence entre les tables \texttt{ALL\_TAB\_COLUMNS} et \texttt{USER\_TAB\_COLUMNS} est que le premier contient
+	les colonnes des tables que l'utilisateur courant a le privilège de les consulter, par contre le second ne contient que les
+	colonnes des tables dont il est le propriétaire. C'est pour cela que la table \texttt{ALL\_TAB\_COLUMNS} contient une colonne
+	supplémentaire \texttt{OWNER} indiquant le propriétaire de la table.
+	\item On peut vérifier que les tables ont été créer en récupérant la colonne \texttt{TABLE\_NAME} de la table \texttt{ALL\_TABLES}
+	ou \texttt{OWNER} égale au nom de l'utilisateur qui a créé la table.
 	\begin{lstlisting}[style=OracleSQL]
 		SELECT TABLE_NAME FROM ALL_TABLES WHERE OWNER = 'ABBAD';
 	\end{lstlisting}
 	Les autres colonnes de \texttt{ALL\_TABLES} donnent d'autres informations sur ces tables.
+	\item Lister les tables de \texttt{SYSTEM} et \texttt{ADMINHOPITAL}:
+	\begin{lstlisting}[style=OracleSQL]
+		SELECT TABLE_NAME FROM ALL_TABLES WHERE OWNER = 'SYSTEM';
+		SELECT TABLE_NAME FROM ALL_TABLES WHERE OWNER = 'ADMINHOPITAL';
+	\end{lstlisting}
+	Pour \texttt{SYSTEM} l'exécution a retourné 138 lignes, par contre pour \texttt{ADMINHOPITAL} aucune ligne n'est retournée, car
+	il n'y a aucune table qui a été créé par cet utilisateur.
 \end{enumerate}
 \end{document}
