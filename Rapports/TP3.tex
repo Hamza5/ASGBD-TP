@@ -23,9 +23,9 @@ MODIFY,RENAME,DISABLE}
 \maketitle
 \begin{enumerate}
 	\item Pour lister le catalogue \texttt{DICT} il suffit d'exécuter la requête suivante :
-	\begin{verbatim}
+	\begin{lstlisting}[style=OracleSQL]
 		SELECT * FROM DICT;
-	\end{verbatim}
+	\end{lstlisting}
 	Elle retourne un grand nombre de lignes, dans mon cas, il a 1821 lignes. Il contient 2 colonnes :
 	\begin{enumerate}
 		\item \texttt{TABLE\_NAME} qui contient le nom de chaque tableau dans la méta-base.
@@ -89,13 +89,19 @@ MODIFY,RENAME,DISABLE}
 		\item \texttt{HIERARCHY} : Indique si le privilege a été attribué en utilisant le \texttt{HIERARCHY OPTION}.
 	\end{itemize}
 	\item Pour trouver le nom de l'utilisateur courant, il suffit d'exécuter la requête suivante :
-	\begin{verbatim}
+	\begin{lstlisting}[style=OracleSQL]
 		SELECT USERNAME FROM USER_USERS;
-	\end{verbatim}
+	\end{lstlisting}
 	Résultat : \texttt{SYS}.
 	\item La différence entre les tableaux \texttt{ALL\_TAB\_COLUMNS} et \texttt{USER\_TAB\_COLUMNS} est que le premier contient
 	les colonnes des tableaux que l'utilisateur courant a le privilège de les consulter, par contre le second ne contient que les
 	colonnes des tableaux dont il est le propriétaire. C'est pour cela que le tableau \texttt{ALL\_TAB\_COLUMNS} contient une colonne
 	supplémentaire \texttt{OWNER} indiquant le propriétaire du tableau.
+	\item On peut vérifier que les tableaux ont été créer en récupérant la colonne \texttt{TABLE\_NAME} du tableau \texttt{ALL\_TABLES}
+	ou \texttt{OWNER} égale au nom de l'utilisateur qui a créé le tableau.
+	\begin{lstlisting}[style=OracleSQL]
+		SELECT TABLE_NAME FROM ALL_TABLES WHERE OWNER = 'ABBAD';
+	\end{lstlisting}
+	Les autres colonnes de \texttt{ALL\_TABLES} donnent d'autres informations sur ces tables.
 \end{enumerate}
 \end{document}
