@@ -93,5 +93,9 @@ MODIFY,RENAME,DISABLE}
 		SELECT USERNAME FROM USER_USERS;
 	\end{verbatim}
 	Résultat : \texttt{SYS}.
+	\item La différence entre les tableaux \texttt{ALL\_TAB\_COLUMNS} et \texttt{USER\_TAB\_COLUMNS} est que le premier contient
+	les colonnes des tableaux que l'utilisateur courant a le privilège de les consulter, par contre le second ne contient que les
+	colonnes des tableaux dont il est le propriétaire. C'est pour cela que le tableau \texttt{ALL\_TAB\_COLUMNS} contient une colonne
+	supplémentaire \texttt{OWNER} indiquant le propriétaire du tableau.
 \end{enumerate}
 \end{document}
