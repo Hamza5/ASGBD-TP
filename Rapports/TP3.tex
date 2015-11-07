@@ -31,5 +31,62 @@ MODIFY,RENAME,DISABLE}
 		\item \texttt{TABLE\_NAME} qui contient le nom de chaque tableau dans la méta-base.
 		\item \texttt{COMMENTS} qui contient la description du contenu de ce tableau.
 	\end{enumerate}
+	\item Le tableau \texttt{ALL\_TAB\_COLUMNS} décrit les colonnes des tables et vues accessibles à l'utilisateur courant, et
+	comme cet utilisateur est \texttt{SYSTEM}, on voit tout les tables existantes.
+	Ce tabeau contient 31 colonnes, parmi eux on trouve :
+	\begin{itemize}
+		\item \texttt{OWNER} : Le nom de l'utilisateur propriétaire de la table/vue.
+		\item \texttt{TABLE\_NAME} : Le nom de la table/vue.
+		\item \texttt{COLUMN\_NAME} : Le nom de la colonne.
+		\item \texttt{DATA\_TYPE} : Le type de la colonne.
+		\item \texttt{DATA\_LENGTH} : La taille de la colonne (en octets).
+		\item \texttt{DATA\_PRECISION} : La précision d'un nombre décimal (Pour les types \texttt{FLOAT} et \texttt{NUMBER}).
+		\item \texttt{NULLABLE} : Spécifie si la colonne accepte la valeur \texttt{NULL}. Si la valeur de cette colonne est \texttt{N}
+		alors il n'est pas possible d'insérer \texttt{NULL} dans cette colonne.
+		\item \texttt{COLUMN\_ID} : Un nombre unique identifiant la colonne.
+		\item \texttt{DATA\_DEFAULT} : La valeur par défaut de la colonne.
+		\item \texttt{NUM\_DISTINCT} : Nombre de valeurs distincts dans la colonne.
+		\item \texttt{LOW\_VALUE} : La plus petite valeur dans la colonne.
+		\item \texttt{HIGH\_VALUE} : La plus grande valeur dans la colonne.
+		\item \texttt{NUM\_NULLS} : Nombre de valeurs \texttt{NULL} dans la colonne.
+	\end{itemize}
+	Le tableau \texttt{USER\_USERS} décrit l'utilisateur courant. Il contient 10 colonnes :
+	\begin{itemize}
+		\item \texttt{USERNAME} : Le nom de l'utilisateur.
+		\item \texttt{USER\_ID} : L'identificateur de l'utilisateur.
+		\item \texttt{ACCOUNT\_STATUS} : L'état de son compte.
+		\item \texttt{LOCK\_DATE} : Date de verrouillage du compte (S'il est verrouillé).
+		\item \texttt{EXPIRY\_DATE} : Date de péremption du compte.
+		\item \texttt{DEFAULT\_TABLESPACE} : L'espace des tables par défaut pour ce compte.
+		\item \texttt{TEMPORARY\_TABLESPACE} : L'espace des tables temporaire pour ce compte.
+		\item \texttt{CREATED} : La date de création du compte.
+		\item \texttt{INITIAL\_RSRC\_CONSUMER\_GROUP}.
+		\item \texttt{EXTERNAL\_NAME}.
+	\end{itemize}
+	Le tableau \texttt{ALL\_CONSTRAINTS} décrit tout les contraintes d'integrité qui sont accessibles à l'utilisateur courant.
+	Comme on est connecté avec \texttt{SYSTEM}, alors on peut voir tout les contraintes existantes.
+	Ce tableau contient 21 colonnes, parmi ces colonnes on trouve :
+	\begin{itemize}
+		\item \texttt{OWNER} : Le nom de l'utilisateur propriétaire de la contrainte.
+		\item \texttt{CONSTRAINT\_NAME} : Le nom de la contrainte.
+		\item \texttt{CONSTRAINT\_TYPE} : Le type de la contrainte.
+		\item \texttt{TABLE\_NAME} : La table/vue qui associé à la contrainte.
+		\item \texttt{R\_OWNER} : Le nom de l'utilisateur propriétaire du tableau référencée (Si la contrainte est référentielle).
+		\item \texttt{R\_CONSTRAINT\_NAME} : Le nom de la contrainte dans le tableau référencée (Si la contrainte est référentielle).
+		\item \texttt{DELETE\_RULE} : La règle de suppression pour les contraintes référentielles.
+		\item \texttt{STATUS} : \'{E}tat d'activation de la contrainte.
+		\item \texttt{LAST\_CHANGE} : La dernière date d'activation/désactivation de la contrainte.
+	\end{itemize}
+	Le tableau \texttt{USER\_TAB\_PRIVS} décrit les privilèges des objets dont l'utilisateur courant il est le propriétaire,
+	le concédent ou le titulaire du privilège. Il contient 7 colonnes :
+	\begin{itemize}
+		\item \texttt{GRANTEE} : Le nom de l'utilisateur dont le privilège est accordé.
+		\item \texttt{OWNER} : Le nom de l'utilisateur propriétaire de l'objet.
+		\item \texttt{TABLE\_NAME} : Le nom de l'objet.
+		\item \texttt{GRANTOR} : Le nom de l'utilisateur qui a attribué le privilège.
+		\item \texttt{PRIVILEGE} : Le nom du privilège.
+		\item \texttt{GRANTABLE} : Indique si le privilege a été attribué en utilisant le \texttt{GRANT OPTION}.
+		\item \texttt{HIERARCHY} : Indique si le privilege a été attribué en utilisant le \texttt{HIERARCHY OPTION}.
+	\end{itemize}
 \end{enumerate}
 \end{document}
