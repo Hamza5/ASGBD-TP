@@ -129,5 +129,11 @@ MODIFY,RENAME,DISABLE}
 	\end{verbatim}
 	Cette requête cherche les tables qui ont au moins une clé qui référence une autre table, ensuite elle vérifie si la clé est une
 	clé étrangère et que le nom de la table source est \texttt{HOSPITALISATION} et la table destination est \texttt{PATIENT}.
+	\item Pour obtenir la liste des contraintes créées lors du premier TP avec le type, le nom de la table, le nom de la contraine
+	référencée (pour les clés étrangères) et l'état de chaque contrainte on exécute la requête suivante à partir de l'utilisateur
+	qui a créé les tables :
+	\begin{lstlisting}[style=OracleSQL]
+		SELECT CONSTRAINT_NAME, CONSTRAINT_TYPE, TABLE_NAME, R_CONSTRAINT_NAME, DELETE_RULE, STATUS FROM USER_CONSTRAINTS;
+	\end{lstlisting}
 \end{enumerate}
 \end{document}
