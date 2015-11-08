@@ -110,5 +110,10 @@ MODIFY,RENAME,DISABLE}
 	\end{lstlisting}
 	Pour \texttt{SYSTEM} l'exécution a retourné 138 lignes, par contre pour \texttt{ADMINHOPITAL} aucune ligne n'est retournée, car
 	il n'y a aucune table qui a été créé par cet utilisateur.
+	\item Pour voir la description des attributs des tables \texttt{HOSPITALISATION} et \texttt{PATIENT} il suffit de connecter en tant
+	que l'utilisateur propriétaire de ces tables et exécuter la requête suivante :
+	\begin{lstlisting}[style=OracleSQL]
+		SELECT COLUMN_NAME, DATA_TYPE, NULLABLE, DATA_DEFAULT FROM USER_TAB_COLUMNS WHERE TABLE_NAME IN ('HOSPITALISATION', 'PATIENT');
+	\end{lstlisting}
 \end{enumerate}
 \end{document}
