@@ -115,5 +115,19 @@ MODIFY,RENAME,DISABLE}
 	\begin{lstlisting}[style=OracleSQL]
 		SELECT COLUMN_NAME, DATA_TYPE, NULLABLE, DATA_DEFAULT FROM USER_TAB_COLUMNS WHERE TABLE_NAME IN ('HOSPITALISATION', 'PATIENT');
 	\end{lstlisting}
+	\item Pour vérifier qu'il y a une clé étrangère de \texttt{HOSPITALISATION} vers \texttt{PATIENT} on peut exécuter la requêtable
+	suivante :
+	\begin{lstlisting}[style=OracleSQL]
+		SELECT A.TABLE_NAME, A.CONSTRAINT_NAME, B.TABLE_NAME FROM ALL_CONSTRAINTS A INNER JOIN ALL_CONSTRAINTS B ON A.R_CONSTRAINT_NAME
+		= B.CONSTRAINT_NAME WHERE A.CONSTRAINT_TYPE = 'P' AND A.TABLE_NAME = 'HOSPITALISATION' AND B.TABLE_NAME = 'PATIENT';
+	\end{lstlisting}
+	Résultat :
+	\begin{verbatim}
+		TABLE_NAME            CONSTRAINT_NAME           TABLE_NAME
+		------------------------------------------------------------------------
+		HOSPITALISATION       FK_NUM_PATIENT            PATIENT
+	\end{verbatim}
+	Cette requête cherche les tables qui ont au moins une clé qui référence une autre table, ensuite elle vérifie si la clé est une
+	clé étrangère et que le nom de la table source est \texttt{HOSPITALISATION} et la table destination est \texttt{PATIENT}.
 \end{enumerate}
 \end{document}
