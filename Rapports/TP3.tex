@@ -135,5 +135,12 @@ MODIFY,RENAME,DISABLE}
 	\begin{lstlisting}[style=OracleSQL]
 		SELECT CONSTRAINT_NAME, CONSTRAINT_TYPE, TABLE_NAME, R_CONSTRAINT_NAME, DELETE_RULE, STATUS FROM USER_CONSTRAINTS;
 	\end{lstlisting}
+	\item Les informations qui permet de recréer la table \texttt{HOSPITALISATION} sont : les noms des colonnes, ses types, la taille
+	de chaque type, peut être \texttt{NULL} ou non, les noms des contraintes, ses types et ses contraintes référencées. On peut
+	récupérer ces données à l'aide de ces requêtes :
+	\begin{lstlisting}[style=OracleSQL]
+		SELECT COLUMN_NAME, DATA_TYPE, DATA_PRECISION, CHAR_LENGTH, NULLABLE FROM USER_TAB_COLUMNS WHERE TABLE_NAME = 'HOSPITALISATION';
+		SELECT CONSTRAINT_NAME, CONSTRAINT_TYPE, R_CONSTRAINT_NAME, DELETE_RULE FROM USER_CONSTRAINTS WHERE TABLE_NAME = 'HOSPITALISATION';
+	\end{lstlisting}
 \end{enumerate}
 \end{document}
