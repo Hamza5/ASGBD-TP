@@ -142,5 +142,21 @@ MODIFY,RENAME,DISABLE}
 		SELECT COLUMN_NAME, DATA_TYPE, DATA_PRECISION, CHAR_LENGTH, NULLABLE FROM USER_TAB_COLUMNS WHERE TABLE_NAME = 'HOSPITALISATION';
 		SELECT CONSTRAINT_NAME, CONSTRAINT_TYPE, R_CONSTRAINT_NAME, DELETE_RULE FROM USER_CONSTRAINTS WHERE TABLE_NAME = 'HOSPITALISATION';
 	\end{lstlisting}
+	\item Comme nous avons enlever tout les privilèges accordés à \texttt{AdminHopital} dans le TP 2 et nous avons affecté quelque unes
+	au rôle \texttt{GestionnairePatient} et \texttt{AdminHopital} est affecté a ce rôle donc les privilèges de cet utilisateur sont
+	les mêmes que ce rôle, on peut les voir en exécutant cette requête :
+	\begin{lstlisting}[style=OracleSQL]
+		SELECT PRIVILEGE, TABLE_NAME FROM ALL_TAB_PRIVS WHERE GRANTEE = 'GESTIONNAIREPATIENT';
+	\end{lstlisting}
+	Résultats :
+	\begin{verbatim}
+		PRIVILEGE           TABLE_NAME
+		-----------------------------------------
+		SELECT              PATIENT
+		UPDATE              HOSPITALISATION
+		INSERT              HOSPITALISATION
+		DELETE              HOSPITALISATION
+		SELECT              SOIGNE
+	\end{verbatim}
 \end{enumerate}
 \end{document}
