@@ -191,5 +191,15 @@ MODIFY,RENAME,DISABLE}
 		-------------------
 		ABBAD
 	\end{verbatim}
+	\item Calculer la taille de la table \texttt{HOSPITALISATION} en Ko :
+	\begin{lstlisting}[style=OracleSQL]
+		SELECT AVG_ROW_LEN*NUM_ROWS/1024 AS TAILLE FROM ALL_TABLES WHERE TABLE_NAME = 'HOSPITALISATION';
+	\end{lstlisting}
+	Résultats :
+	\begin{verbatim}
+		TAILLE
+		-------------------
+		.647460938
+	\end{verbatim}
 \end{enumerate}
 \end{document}
