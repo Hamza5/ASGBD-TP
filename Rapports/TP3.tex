@@ -158,5 +158,16 @@ MODIFY,RENAME,DISABLE}
 		DELETE              HOSPITALISATION
 		SELECT              SOIGNE
 	\end{verbatim}
+	\item Pour retrouver les rôles affectés à \texttt{AdminHopital} on exécute cette requête à partir de l'utilisateur
+	\texttt{SYSTEM} :
+	\begin{lstlisting}[style=OracleSQL]
+		SELECT GRANTED_ROLE FROM DBA_ROLE_PRIVS WHERE GRANTEE = 'ADMINHOPITAL';
+	\end{lstlisting}
+	Résultats :
+	\begin{verbatim}
+		GRANTED_ROLE
+		-------------------
+		GESTIONNAIREPATIENT
+	\end{verbatim}
 \end{enumerate}
 \end{document}
