@@ -180,5 +180,16 @@ MODIFY,RENAME,DISABLE}
 		-------------------
 		PATIENTMUTUELLE_IX
 	\end{verbatim}
+	\item Pour connaitre le propriétaire de la table \texttt{HOSPITALISATION} il doit simplement exécuter l'inverse de la
+	requête précédente c'est à dire :
+	\begin{lstlisting}[style=OracleSQL]
+		SELECT OWNER FROM ALL_OBJECTS WHERE OBJECT_NAME = 'HOSPITALISATION';
+	\end{lstlisting}
+	Résultats :
+	\begin{verbatim}
+		OWNER
+		-------------------
+		ABBAD
+	\end{verbatim}
 \end{enumerate}
 \end{document}
