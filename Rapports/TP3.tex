@@ -169,5 +169,16 @@ MODIFY,RENAME,DISABLE}
 		-------------------
 		GESTIONNAIREPATIENT
 	\end{verbatim}
+	\item Pour retrouver tous les objets qui appartiennent à \texttt{AdminHopital} à partir de \texttt{SYSTEM} on doit
+	exécuter la requête suivante :
+	\begin{lstlisting}[style=OracleSQL]
+		SELECT OBJECT_NAME FROM ALL_OBJECTS WHERE OWNER = 'ADMINHOPITAL';
+	\end{lstlisting}
+	Résultats :
+	\begin{verbatim}
+		OBJECT_NAME
+		-------------------
+		PATIENTMUTUELLE_IX
+	\end{verbatim}
 \end{enumerate}
 \end{document}
