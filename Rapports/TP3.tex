@@ -201,5 +201,57 @@ MODIFY,RENAME,DISABLE}
 		-------------------
 		.647460938
 	\end{verbatim}
+	\item Vérification de l'effet de :
+	\begin{itemize}
+		\item Création d'un tableau :
+		\begin{lstlisting}[style=OracleSQL]
+			CREATE TABLE TEST(ID NUMBER(3), TITRE NCHAR(10) NOT NULL);
+			SELECT COLUMN_NAME, DATA_TYPE, NULLABLE, DATA_PRECISION, CHAR_LENGTH FROM ALL_TAB_COLUMNS WHERE TABLE_NAME = 'TEST';
+		\end{lstlisting}
+		Résultats :
+		\begin{verbatim}
+			COLUMN_NAME     DATA_TYPE     NULLABLE     DATA_PRECISION     CHAR_LENGTH
+			--------------------------------------------------------------------------
+			ID              NUMBER        Y            3                  0
+			TITRE           NCHAR         N                               10
+		\end{verbatim}
+		\item Ajout des contraintes :
+		\begin{lstlisting}[style=OracleSQL]
+			ALTER TABLE TEST ADD CONSTRAINT PK_TEST PRIMARY KEY(ID);
+			ALTER TABLE TEST ADD CONSTRAINT U_TEST UNIQUE(TITRE);
+			ALTER TABLE TEST ADD CONSTRAINT C_TEST CHECK(LENGTH(TITRE) > 4);
+			SELECT CONSTRAINT_NAME, CONSTRAINT_TYPE FROM ALL_CONSTRAINTS WHERE TABLE_NAME = 'TEST';
+		\end{lstlisting}
+		Résultats :
+		\begin{verbatim}
+			CONSTRAINT_NAME           CONSTRAINT_TYPE
+			------------------------------------------
+			SYS_C004072               C
+			PK_TEST                   P
+			U_TEST                    U
+			C_TEST                    C
+		\end{verbatim}
+		\item Modification des colonnes :
+		\begin{lstlisting}[style=OracleSQL]
+			ALTER TABLE TEST MODIFY TITRE NVARCHAR2(20);
+			ALTER TABLE TEST RENAME COLUMN ID TO IDF;
+			ALTER TABLE TEST ADD SOUS_TITRE NVARCHAR2(40);
+			SELECT COLUMN_NAME, DATA_TYPE, NULLABLE, DATA_PRECISION, CHAR_LENGTH FROM ALL_TAB_COLUMNS WHERE TABLE_NAME = 'TEST';
+		\end{lstlisting}
+		Résultats :
+		\begin{verbatim}
+			COLUMN_NAME     DATA_TYPE     NULLABLE     DATA_PRECISION     CHAR_LENGTH
+			--------------------------------------------------------------------------
+			IDF             NUMBER        N            3                  0
+			TITRE           NVARCHAR2     N                               20
+			SOUS_TITRE      NVARCHAR2     Y                               40
+		\end{verbatim}
+		\item Suppression d'une table :
+		\begin{lstlisting}[style=OracleSQL]
+			DROP TABLE TEST;
+			SELECT COLUMN_NAME, DATA_TYPE, NULLABLE, DATA_PRECISION, CHAR_LENGTH FROM ALL_TAB_COLUMNS WHERE TABLE_NAME = 'TEST';
+		\end{lstlisting}
+		Résultats : \texttt{no rows selected}
+	\end{itemize}
 \end{enumerate}
 \end{document}
