@@ -93,8 +93,8 @@ MODIFY,RENAME,DISABLE}
 		SELECT USERNAME FROM USER_USERS;
 	\end{lstlisting}
 	Résultat : \texttt{SYS}.
-	\item La différence entre les tables \texttt{ALL\_TAB\_COLUMNS} et \texttt{USER\_TAB\_COLUMNS} est que le premier contient
-	les colonnes des tables que l'utilisateur courant a le privilège de les consulter, par contre le second ne contient que les
+	\item La différence entre les tables \texttt{ALL\_TAB\_COLUMNS} et \texttt{USER\_TAB\_COLUMNS} est que le première contient
+	les colonnes des tables que l'utilisateur courant a le privilège de les consulter, par contre la secondr ne contient que les
 	colonnes des tables dont il est le propriétaire. C'est pour cela que la table \texttt{ALL\_TAB\_COLUMNS} contient une colonne
 	supplémentaire \texttt{OWNER} indiquant le propriétaire de la table.
 	\item On peut vérifier que les tables ont été créer en récupérant la colonne \texttt{TABLE\_NAME} de la table \texttt{ALL\_TABLES}
@@ -143,7 +143,7 @@ MODIFY,RENAME,DISABLE}
 		SELECT CONSTRAINT_NAME, CONSTRAINT_TYPE, R_CONSTRAINT_NAME, DELETE_RULE FROM USER_CONSTRAINTS WHERE TABLE_NAME = 'HOSPITALISATION';
 	\end{lstlisting}
 	\item Comme nous avons enlevé tout les privilèges accordés à \texttt{AdminHopital} dans le TP 2 et nous avons affecté quelque unes
-	au rôle \texttt{GestionnairePatient} et \texttt{AdminHopital} est affecté a ce rôle donc les privilèges de cet utilisateur sont
+	au rôle \texttt{GestionnairePatient} et \texttt{AdminHopital} est affecté à ce rôle donc les privilèges de cet utilisateur sont
 	les mêmes que ce rôle, on peut les voir en exécutant cette requête :
 	\begin{lstlisting}[style=OracleSQL]
 		SELECT PRIVILEGE, TABLE_NAME FROM ALL_TAB_PRIVS WHERE GRANTEE = 'GESTIONNAIREPATIENT';
