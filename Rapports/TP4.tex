@@ -4,6 +4,7 @@
 \usepackage{lmodern}
 \usepackage[frenchb]{babel}
 \usepackage[left=1.5cm,right=1.5cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{framed}
 \usepackage{minted}
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{fancyhdr}
@@ -28,5 +29,44 @@
     \inputminted[firstline=30, lastline=30]{SQL}{../Scripts/TP4.sql}
     Pour vérifier les changements faites, on peut récupérer tout les salaires :
     \inputminted[firstline=31, lastline=31]{SQL}{../Scripts/TP4.sql}
-\end{enumerate}
+    \item La procédure de vérification du salaire :
+    \inputminted[firstline=34, lastline=40]{SQL}{../Scripts/TP4.sql}
+    Tester la procédure pour tout les infirmiers :
+    \inputminted[firstline=42, lastline=50]{SQL}{../Scripts/TP4.sql}
+    Résultats :
+    \begin{oframed}
+        \begin{verbatim}
+HADJ Zouhir 18841.17 Vérification  positive
+OUSSEDIK Hakim 17670.72 Vérification  positive
+ABAD Abdelhamid 22470.32 Vérification  positive
+ABAYAHIA Abdelkader 23611.88 Vérification  positive
+ABBOU Mohamed 20373.68 Vérification  positive
+ABDELOUAHAB OUAHIBA 21979.88 Vérification  positive
+ABDEMEZIANE Madjid 18848.67 Vérification  positive
+ACHAIBOU Rachid 26481.32 Vérification  positive
+AGGOUN Khadidja 21372.58 Vérification  positive
+AISSAT Salima 23581.26 Vérification  positive
+BABACI Mourad 17678.22 Vérification  positive
+BADI Hatem 31152.98 Vérification  négative
+BAKIR ADEL 18944.42 Vérification  positive
+BALI Malika 22476.32 Vérification  positive
+BELABES Abdelkader 23620.88 Vérification  positive
+BELHAMIDI Mustapha 20251.81 Vérification  positive
+BELKACEMI Hocine 20322.68 Vérification  positive
+BELKOUT Tayeb 21982.88 Vérification  positive
+FERAOUN Houria 32599.71 Vérification  négative
+CHAKER Nadia 26527.82 Vérification  positive
+IGOUDJIL Redouane 21337.38 Vérification  positive
+GHEZALI Lakhdar 22146.06 Vérification  positive
+KOULA Brahim 23581.26 Vérification  positive
+BELAID Layachi 20716.18 Vérification  positive
+CHALABI Mourad 19494.82 Vérification  positive
+SAIDOUNI Wafa 21227.81 Vérification  positive
+Yalaoui Lamia 35255.71 Vérification  négative
+AYATA Samia 19810.06 Vérification  positive
+
+PL/SQL procedure successfully completed.
+        \end{verbatim}
+    \end{oframed}
+    \end{enumerate}
 \end{document}
