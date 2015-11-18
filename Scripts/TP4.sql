@@ -97,4 +97,4 @@ WHEN rotation_inexistante THEN DBMS_OUTPUT.PUT_LINE('Erreur : La rotation spéci
 WHEN salaire_incorrecte THEN DBMS_OUTPUT.PUT_LINE('Erreur : Le salaire doit être entre 10000 et 30000 !'); ROLLBACK;
 END;
 /
-EXECUTE Ajouter_infirmier(250, 'XYZ', 'ABC', 'GHJK', '2531490041', 'REA', 'JOUR', 7500);
+EXECUTE Ajouter_infirmier(250, 'Nom', 'Prénom', 'Adresse', '2531490041', 'REA', 'JOUR', 17500);
