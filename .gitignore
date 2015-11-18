@@ -11,3 +11,5 @@
 *.docx
 # Latex-Plus : Atom editor plug-in
 .latex
+# Minted Latex package
+_minted-*
