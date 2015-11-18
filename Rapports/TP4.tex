@@ -8,6 +8,7 @@
 \usepackage{minted}
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{fancyhdr}
+\definecolor{shadecolor}{rgb}{0.97,0.97,0.97}
 \setminted{breaklines, frame=single}
 \author{Hamza ABBAD\\ Master Systèmes Informatiques Intelligents}
 \title{\textbf{Rapport de TP ASGBD} \\ TP $n^{\circ}$4}
@@ -17,24 +18,39 @@
 \rhead{SII M1 - Groupe 2}
 \begin{document}
 \maketitle
+\textit{Toutes les requêtes dans ce TP sont exécutées en utilisant l'utilisateur qui a créé les tables dans le TP 1.}
 \begin{enumerate}
     \item Un code PL/SQL permettant d'afficher le numéro de chaque chambre avec son
     service et le nombre de lits occupés et libres :
-    \inputminted[firstline=4, lastline=18]{SQL}{../Scripts/TP4.sql}
+    \begin{snugshade}
+        \inputminted[firstline=4, lastline=18]{SQL}{../Scripts/TP4.sql}
+    \end{snugshade}
     Pour augmenter les salaires des infirmiers on doit d'abord désactiver la contrainte de vérification :
-    \inputminted[firstline=21, lastline=21]{SQL}{../Scripts/TP4.sql}
-    Ensuite, il faut définir la procédure :
-    \inputminted[firstline=22, lastline=29]{SQL}{../Scripts/TP4.sql}
+    \begin{snugshade}
+        \inputminted[firstline=21, lastline=21]{SQL}{../Scripts/TP4.sql}
+    \end{snugshade}
+    Ensuite, il faut définir la procédure :\\
+    \begin{snugshade}
+        \inputminted[firstline=22, lastline=29]{SQL}{../Scripts/TP4.sql}
+    \end{snugshade}
     Enfin, l'exécuter :
-    \inputminted[firstline=30, lastline=30]{SQL}{../Scripts/TP4.sql}
+    \begin{snugshade}
+        \inputminted[firstline=30, lastline=30]{SQL}{../Scripts/TP4.sql}
+    \end{snugshade}
     Pour vérifier les changements faites, on peut récupérer tout les salaires :
-    \inputminted[firstline=31, lastline=31]{SQL}{../Scripts/TP4.sql}
+    \begin{snugshade}
+        \inputminted[firstline=31, lastline=31]{SQL}{../Scripts/TP4.sql}
+    \end{snugshade}
     \item La procédure de vérification du salaire :
-    \inputminted[firstline=34, lastline=40]{SQL}{../Scripts/TP4.sql}
+    \begin{snugshade}
+        \inputminted[firstline=34, lastline=40]{SQL}{../Scripts/TP4.sql}
+    \end{snugshade}
     Tester la procédure pour tout les infirmiers :
-    \inputminted[firstline=42, lastline=50]{SQL}{../Scripts/TP4.sql}
+    \begin{snugshade}
+        \inputminted[firstline=42, lastline=50]{SQL}{../Scripts/TP4.sql}
+    \end{snugshade}
     Résultats :
-    \begin{oframed}
+    \begin{snugshade}
         \begin{verbatim}
 HADJ Zouhir 18841.17 Vérification  positive
 OUSSEDIK Hakim 17670.72 Vérification  positive
@@ -67,13 +83,17 @@ AYATA Samia 19810.06 Vérification  positive
 
 PL/SQL procedure successfully completed.
         \end{verbatim}
-    \end{oframed}
+    \end{snugshade}
     \item Une fonction qui retourne pour chaque spécialité le nombre de medecins affectés :
-    \inputminted[firstline=53, lastline=59]{SQL}{../Scripts/TP4.sql}
+    \begin{snugshade}
+        \inputminted[firstline=53, lastline=59]{SQL}{../Scripts/TP4.sql}
+    \end{snugshade}
     Exécuter la fonction pour chaque spécialitée pour afficher le nombre de medecins affectés à chaque spécialitée :
-    \inputminted[firstline=61, lastline=68]{SQL}{../Scripts/TP4.sql}
+    \begin{snugshade}
+        \inputminted[firstline=61, lastline=68]{SQL}{../Scripts/TP4.sql}
+    \end{snugshade}
     Résultats :
-    \begin{oframed}
+    \begin{snugshade}
         \begin{verbatim}
 Orthopédiste 5
 Traumatologue 5
@@ -84,6 +104,95 @@ Anesthésiste 5
 
 PL/SQL procedure successfully completed.
         \end{verbatim}
-    \end{oframed}
+    \end{snugshade}
+    \item Une procédure permettant d'ajouter un nouveau infirmier dans la base de données en faisant les vérifications nécessaires :
+    \begin{snugshade}
+        \inputminted[firstline=71, lastline=99]{SQL}{../Scripts/TP4.sql}
+    \end{snugshade}
+    Pour ajouter un infirmier il suffit d'exécuter cette procédure comme suit :
+    \begin{snugshade}
+        \inputminted[firstline=100, lastline=100]{SQL}{../Scripts/TP4.sql}
+    \end{snugshade}
+    S'il n'y a aucune erreur, les informations de l'infirmier seront automatiquement insérées dans les tables \texttt{EMPLOYE} et
+    \texttt{INFIRMIER}, sinon, une erreur correspondant à la valeur erronée sera affichée.\\
+    Quelques testes :
+    \begin{snugshade}
+        \begin{verbatim}
+SQL> SELECT COUNT(*) FROM INFIRMIER;
+
+  COUNT(*)
+----------
+        28
+
+SQL> SELECT COUNT(*) FROM EMPLOYE;
+
+  COUNT(*)
+----------
+        61
+
+SQL> EXECUTE Ajouter_infirmier(325, 'ABBAD', 'Hamza', 'Cite 8 Mai 45',
+'0551788241', 'CAR', 'JOUR', 25000);
+
+PL/SQL procedure successfully completed.
+
+SQL> SELECT COUNT(*) FROM INFIRMIER;
+
+  COUNT(*)
+----------
+        29
+
+SQL> SELECT COUNT(*) FROM EMPLOYE;
+
+  COUNT(*)
+----------
+        62
+
+SQL> SELECT * FROM EMPLOYE WHERE NUM_EMP = 325;
+
+   NUM_EMP NOM_EMP
+---------- --------------------------------------------------
+PRENOM_EMP
+--------------------------------------------------
+ADRESSE_EMP
+--------------------------------------------------------------------------------
+TEL_EMP
+----------
+       325 ABBAD
+Hamza
+Cite 8 Mai 45
+0551788241
+
+
+SQL> SELECT * FROM INFIRMIER WHERE NUM_INF = 325;
+
+   NUM_INF COD ROTA    SALAIRE
+---------- --- ---- ----------
+       325 CAR JOUR      25000
+
+SQL> EXECUTE Ajouter_infirmier(15, 'XYZ', 'ABC', 'GHJK',
+'2531490041', 'REA', 'JOUR', 17500);
+Erreur : Un employe du même numéro existe déja !
+
+PL/SQL procedure successfully completed.
+
+SQL> EXECUTE Ajouter_infirmier(250, 'XYZ', 'ABC', 'GHJK',
+'2531490041', 'DBA', 'JOUR', 17500);
+Erreur : Le service spécifié n'existe pas !
+
+PL/SQL procedure successfully completed.
+
+SQL> EXECUTE Ajouter_infirmier(250, 'XYZ', 'ABC', 'GHJK',
+'2531490041', 'REA', 'DEMI', 17500);
+Erreur : La rotation spécifiée n'existe pas !
+
+PL/SQL procedure successfully completed.
+
+SQL> EXECUTE Ajouter_infirmier(250, 'XYZ', 'ABC', 'GHJK',
+'2531490041', 'REA', 'JOUR', 7500);
+Erreur : Le salaire doit être entre 10000 et 30000 !
+
+PL/SQL procedure successfully completed.
+        \end{verbatim}
+    \end{snugshade}
     \end{enumerate}
 \end{document}
