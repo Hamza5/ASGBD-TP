@@ -20,5 +20,13 @@
     \item Un code PL/SQL permettant d'afficher le numéro de chaque chambre avec son
     service et le nombre de lits occupés et libres :
     \inputminted[firstline=4, lastline=18]{SQL}{../Scripts/TP4.sql}
+    Pour augmenter les salaires des infirmiers on doit d'abord désactiver la contrainte de vérification :
+    \inputminted[firstline=21, lastline=21]{SQL}{../Scripts/TP4.sql}
+    Ensuite, il faut définir la procédure :
+    \inputminted[firstline=22, lastline=29]{SQL}{../Scripts/TP4.sql}
+    Enfin, l'exécuter :
+    \inputminted[firstline=30, lastline=30]{SQL}{../Scripts/TP4.sql}
+    Pour vérifier les changements faites, on peut récupérer tout les salaires :
+    \inputminted[firstline=31, lastline=31]{SQL}{../Scripts/TP4.sql}
 \end{enumerate}
 \end{document}
